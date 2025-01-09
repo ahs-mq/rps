@@ -1,6 +1,3 @@
-let humanScore = 0;
-let computerScore = 0;
-
 function getComputerChoice(){
     num = Math.random() * (3 - 0) + 0;
     num = Math.floor(num)
@@ -19,25 +16,43 @@ function getPlayerChoice() {
     return player; 
 }
 
+let computerScore = 0;
+let playerScore = 0;
 
-let computerChoice = getComputerChoice()
-let humanChoice= getPlayerChoice()
 
-console.log(computerChoice)
-console.log(humanChoice)
-
+//console.log(computerChoice);
+//console.log(humanChoice);
 
 function playRound(computerChoice,humanChoice) {
-    if (computerChoice == humanChoice) {
-        return 'Its a Tie!';
-    } else if (humanChoice == 'rock' && computerChoice == 'scissors' ) {
-        return 'Rock beats scissors!'
-    } else if (humanChoice == 'paper' && computerChoice == 'rock') {
-        return 'Paper beats rock!'
-    } else if (humanChoice == 'scissors' && computerChoice == 'paper') {
-        return 'Scissors beat paper!'
-    } else return 'You Lose ' + computerChoice + ' beats ' + humanChoice;
+        if (computerChoice == humanChoice) {
+            console.log('Its a Tie!');
+        } else if (humanChoice == 'rock' && computerChoice == 'scissors' ) {
+            playerScore++;
+            console.log('Rock beats scissors!');
+        } else if (humanChoice == 'paper' && computerChoice == 'rock') {
+            playerScore++;
+            console.log('Paper beats rock!');
+        } else if (humanChoice == 'scissors' && computerChoice == 'paper') {
+            playerScore++
+            console.log('Scissors beat paper!');
+        } else {
+            computerScore++;
+            console.log('You Lose! ' + computerChoice + ' beats ' + humanChoice); 
+        }
+    }
 
+function playGame(){
+    for (let i = 0; i < 5; i++) {
+        let humanChoice = getPlayerChoice()
+        let computerChoice = getComputerChoice()
+        playRound(humanChoice, computerChoice)
 }
-
-console.log(playRound(computerChoice,humanChoice))
+    if (playerScore>computerScore){
+        return 'Player Win!'
+    } else if (computerScore > playerScore){
+        return 'Computer Win'
+    } else {
+        return 'Tie!'
+    }
+}
+console.log(playGame())
