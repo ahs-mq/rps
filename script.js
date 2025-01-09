@@ -45,7 +45,7 @@ function playGame(){
     for (let i = 0; i < 5; i++) {
         let humanChoice = getPlayerChoice()
         let computerChoice = getComputerChoice()
-        playRound(humanChoice, computerChoice)
+        playRound(computerChoice, humanChoice)
 }
     if (playerScore>computerScore){
         return 'Player Win!'
