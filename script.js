@@ -1,3 +1,9 @@
+let computerScore = 0;
+let playerScore = 0;
+let currentPlay = document.getElementById('currentPlay')
+
+
+
 function getComputerChoice(){
     num = Math.random() * (3 - 0) + 0;
     num = Math.floor(num)
@@ -10,15 +16,19 @@ function getComputerChoice(){
     }
 }
 
-function getPlayerChoice() {
-    let player = prompt('rock, paper or scissors?');
-    player = player.toLowerCase();
+
+
+function getPlayerChoice(event) {
+    //let player = prompt('rock, paper or scissors?');
+    let player = event.target.value;
+    //player = player.toLowerCase();
+    console.log(player)
     return player; 
 }
-
-let computerScore = 0;
-let playerScore = 0;
-
+let plr = document.querySelectorAll(".choice");
+plr.forEach((cho) => {
+    cho.addEventListener("click",getPlayerChoice)
+});
 
 //console.log(computerChoice);
 //console.log(humanChoice);
